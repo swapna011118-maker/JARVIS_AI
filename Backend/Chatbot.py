@@ -54,10 +54,10 @@ def ChatBot(Query):
                 if memory_msg:
                     msgs = SystemChatBot + [memory_msg] + messages + [{"role": "user", "content": Query}]
                 completion = groq_client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                    model="llama-3.1-8b-instant",
                     messages=msgs,
-                    max_tokens=512,
-                    temperature=0.7,
+                    max_tokens=256,
+                    temperature=0.5,
                     stream=False,
                 )
                 Answer = completion.choices[0].message.content

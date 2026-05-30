@@ -493,7 +493,7 @@ def FirstLayerDMM(prompt: str = "test"):
                 model=MODEL,
                 messages=sys_messages + chat_for_api,
                 temperature=0.4,
-                max_tokens=256,
+                max_tokens=128,
                 stream=False,
             )
         except:
@@ -502,7 +502,7 @@ def FirstLayerDMM(prompt: str = "test"):
                     model=FALLBACK_MODEL,
                     messages=sys_messages + chat_for_api,
                     temperature=0.4,
-                    max_tokens=256,
+                    max_tokens=128,
                     stream=False,
                 )
             except:
@@ -511,7 +511,7 @@ def FirstLayerDMM(prompt: str = "test"):
                         model=FALLBACK_MODEL,
                         messages=sys_messages + chat_for_api,
                         temperature=0.4,
-                        max_tokens=256,
+                        max_tokens=128,
                         stream=False,
                     )
                 except:

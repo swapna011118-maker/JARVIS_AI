@@ -130,7 +130,7 @@ def RealtimeSearchEngine(Query):
                 completion = groq_client.chat.completions.create(
                     model="llama-3.3-70b-versatile",
                     messages=context + messages + [user_entry],
-                    max_tokens=512,
+                    max_tokens=256,
                     temperature=0.3,
                     stream=False,
                 )
@@ -142,7 +142,7 @@ def RealtimeSearchEngine(Query):
                         completion = openrouter_client.chat.completions.create(
                             model="google/gemini-2.0-flash-001",
                             messages=context + messages + [user_entry],
-                            max_tokens=512,
+                            max_tokens=256,
                             temperature=0.3,
                             stream=False,
                         )
@@ -152,7 +152,7 @@ def RealtimeSearchEngine(Query):
                             completion = openrouter_backup.chat.completions.create(
                                 model="google/gemini-2.0-flash-001",
                                 messages=context + messages + [user_entry],
-                                max_tokens=512,
+                                max_tokens=256,
                                 temperature=0.3,
                                 stream=False,
                             )

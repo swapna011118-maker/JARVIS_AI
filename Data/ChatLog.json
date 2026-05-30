@@ -1,22 +1,6 @@
 [
     {
         "role": "user",
-        "content": "recorder"
-    },
-    {
-        "role": "assistant",
-        "content": "I'm not capable of accessing external devices or recording audio, Sir. However, I can provide information on digital recorders or voice recorders if that's what you're looking for. Would you like to know more, Sir?"
-    },
-    {
-        "role": "user",
-        "content": "recorder free version"
-    },
-    {
-        "role": "assistant",
-        "content": "Command error: Traceback (most recent call last):\n  File \"/home/vijay/JARVIS_AI/Backend/WebServer.py\", line 96, in _process_query\n    auto_result = _run_automation_sync(task_items)\n  File \"/home/vijay/JARVIS_AI/Backend/WebServer.py\", line 142, in _run_automation_sync\n    from Backend.Automation import Weather, BatteryStatus, Timer, Screenshot, LockComputer, OpenApp, CloseApp, PlayYoutube, GoogleSearch, YoutubeSearch, System, Notify, CpuUsage, MemoryUsage, DiskUsage, IpAddress, SystemUptime, CurrentDateTime, NoteManager, FindFiles, VolumeSet, BrightnessSet, Wifi, Bluetooth, MicToggle, ClipboardManager, Webcam, Calculator, DefineWord, TellJoke, FlipCoin, EmptyTrash, KillProcess, Screensaver, Content\n  File \"/home/vijay/JARVIS_AI/Backend/Automation.py\", line 1136\n    _write_jarvis_response(text)\n    ^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: expected 'except' or 'finally' block\n"
-    },
-    {
-        "role": "user",
         "content": "hi"
     },
     {
@@ -198,5 +182,21 @@
     {
         "role": "assistant",
         "content": "Battery at 100.0 percent, charging"
+    },
+    {
+        "role": "user",
+        "content": "hi"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir. How may I be of assistance today?"
+    },
+    {
+        "role": "user",
+        "content": "Hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir. Is there anything I can do for you at the moment?"
     }
 ]
