@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <p id="output" data-final=""></p>
+    <script>
+        const output = document.getElementById('output');
+        function startRecognition() {
+            output.textContent = '';
+            output.setAttribute('data-final', '');
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-IN';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 3;
+            recognition.onresult = function(event) {
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        output.textContent = event.results[i][0].transcript;
+                        output.setAttribute('data-final', event.results[i][0].transcript);
+                        break;
+                    }
+                }
+            };
+            recognition.onerror = function(event) {
+                if (event.error !== 'no-speech' && event.error !== 'aborted') {
+                    output.setAttribute('data-final', '__ERROR__:' + event.error);
+                }
+            };
+            recognition.onend = function() {
+                if (!output.getAttribute('data-final')) {
+                    setTimeout(startRecognition, 300);
+                }
+            };
+            recognition.start();
+        }
+        startRecognition();
+    </script>
+</body>
+</html>
