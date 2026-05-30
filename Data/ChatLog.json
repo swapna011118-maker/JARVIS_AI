@@ -1,30 +1,6 @@
 [
     {
         "role": "user",
-        "content": "yeah i did"
-    },
-    {
-        "role": "assistant",
-        "content": "No worries, Sir. I'm glad we cleared that up. I'm Jarvis, your AI assistant, at your service. Shall we proceed with something new or would you like to continue exploring YouTube?"
-    },
-    {
-        "role": "user",
-        "content": "bruh stop with the youtube"
-    },
-    {
-        "role": "assistant",
-        "content": "Apologies, Sir. I'll move on from YouTube. What's on your mind, then? Would you like to discuss something, play a game, or perhaps have me assist you with a task?"
-    },
-    {
-        "role": "user",
-        "content": "lets play a game"
-    },
-    {
-        "role": "assistant",
-        "content": "An excellent choice, Sir. I have a variety of games we can play. We could play a game of 20 Questions, Hangman, or even a text-based adventure game. Alternatively, I can generate a trivia quiz on a topic of your choice. Which type of game sounds appealing to you, Sir?"
-    },
-    {
-        "role": "user",
         "content": "text bases adventure"
     },
     {
@@ -198,5 +174,29 @@
     {
         "role": "assistant",
         "content": "Hello, Sir. I'm back online and ready to assist you. I apologize for the brief disruption. What can I do for you today?"
+    },
+    {
+        "role": "user",
+        "content": "what was my lastquestion"
+    },
+    {
+        "role": "assistant",
+        "content": "Your last question was \"recorder free version\", Sir. Would you like me to try answering it again?"
+    },
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir. I'm here and ready to assist you. How may I be of service today?"
+    },
+    {
+        "role": "user",
+        "content": "open YouTube"
+    },
+    {
+        "role": "assistant",
+        "content": "Opening youtube, Sir."
     }
 ]

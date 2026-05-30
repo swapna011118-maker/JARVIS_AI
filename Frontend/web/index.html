@@ -427,6 +427,102 @@
     box-shadow: 0 4px 16px rgba(0,200,255,0.12);
   }
 
+  /* ── Quick Actions ── */
+  .quick-actions {
+    display: flex; gap: 6px; padding: 6px 32px 4px;
+    overflow-x: auto; flex-shrink: 0;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .quick-actions::-webkit-scrollbar { display: none; }
+  .quick-actions .pill {
+    flex-shrink: 0; font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 0.8px;
+    padding: 3px 12px; border-radius: 12px;
+    border: 1px solid rgba(0, 200, 255, 0.1);
+    background: rgba(0, 20, 30, 0.3);
+    color: rgba(0, 200, 255, 0.45);
+    cursor: pointer; transition: all 0.25s;
+    user-select: none;
+  }
+  .quick-actions .pill:hover {
+    border-color: rgba(0, 200, 255, 0.35);
+    color: rgba(0, 200, 255, 0.75);
+    background: rgba(0, 60, 90, 0.15);
+    box-shadow: 0 0 10px rgba(0,200,255,0.06);
+  }
+  .quick-actions .pill:active { transform: scale(0.95); }
+
+  /* ── Header Tool Buttons ── */
+  .header-tool {
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
+    padding: 2px 8px; border-radius: 6px;
+    border: 1px solid rgba(0, 200, 255, 0.08);
+    background: transparent; color: rgba(0, 200, 255, 0.35);
+    cursor: pointer; transition: all 0.2s; line-height: 1.4;
+    user-select: none;
+  }
+  .header-tool:hover { border-color: rgba(0,200,255,0.3); color: rgba(0,200,255,0.6); }
+
+  /* ── Command Panel ── */
+  .cmd-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cmd-overlay.open { opacity: 1; pointer-events: auto; }
+
+  .cmd-panel {
+    position: fixed; top: 0; right: -340px; bottom: 0; z-index: 1000;
+    width: 320px; background: rgba(6, 10, 20, 0.92);
+    backdrop-filter: blur(24px);
+    border-left: 1px solid rgba(0, 200, 255, 0.08);
+    padding: 20px; overflow-y: auto;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cmd-panel.open { right: 0; }
+  .cmd-panel::-webkit-scrollbar { width: 3px; }
+  .cmd-panel::-webkit-scrollbar-thumb { background: rgba(0, 200, 255, 0.1); border-radius: 2px; }
+
+  .cmd-panel .cmd-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(0, 200, 255, 0.06);
+  }
+  .cmd-panel .cmd-header h3 {
+    font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: 2px; color: rgba(0, 200, 255, 0.4); margin: 0;
+  }
+  .cmd-panel .cmd-header .cmd-close {
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    padding: 2px 10px; border-radius: 6px;
+    border: 1px solid rgba(0, 200, 255, 0.08); background: transparent;
+    color: rgba(0, 200, 255, 0.3); cursor: pointer; transition: all 0.2s;
+  }
+  .cmd-panel .cmd-header .cmd-close:hover { border-color: rgba(0,200,255,0.3); color: rgba(0,200,255,0.6); }
+
+  .cmd-panel .cmd-group { display: flex; flex-direction: column; gap: 6px; }
+  .cmd-panel .cmd-group-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 8px;
+    letter-spacing: 2px; color: rgba(0, 200, 255, 0.2);
+    text-transform: uppercase; margin-bottom: 2px;
+  }
+  .cmd-panel .cmd-btn {
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    letter-spacing: 1px; text-align: left;
+    padding: 6px 12px; border-radius: 8px;
+    border: 1px solid rgba(0, 200, 255, 0.06);
+    background: rgba(0, 20, 30, 0.2);
+    color: rgba(0, 200, 255, 0.45);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .cmd-panel .cmd-btn:hover {
+    border-color: rgba(0, 200, 255, 0.2);
+    background: rgba(0, 60, 90, 0.1);
+    color: rgba(0, 200, 255, 0.7);
+  }
+  .cmd-panel .cmd-btn:active { transform: scale(0.97); }
+
   /* ── Responsive ── */
   @media (max-width: 640px) {
     .header { padding: 10px 16px; }
@@ -435,6 +531,7 @@
     .chat { padding: 10px 16px; }
     .msg { max-width: 92%; font-size: 13px; }
     .transcription-panel { padding-left: 16px; padding-right: 16px; }
+    .quick-actions { padding: 6px 16px 4px; }
     .input-bar { padding: 8px 16px 12px; }
     .holo-ring { width: 300px; height: 300px; }
   }
@@ -501,6 +598,8 @@
     <h1>JARVIS <span>// M.A.I.N</span></h1>
   </div>
   <div class="header-right">
+    <button class="header-tool" onclick="clearChat()" title="Clear chat">⌧</button>
+    <button class="header-tool" onclick="toggleCmdPanel()" title="Commands">☰</button>
     <div class="status-wrap">
       <span class="status-dot" id="statusDot"></span>
       <span id="statusText">INITIALIZING</span>
@@ -527,9 +626,62 @@
     </div>
   </div>
 
+  <div class="quick-actions">
+    <span class="pill" onclick="sendQuick('weather')">WEATHER</span>
+    <span class="pill" onclick="sendQuick('battery')">BATTERY</span>
+    <span class="pill" onclick="sendQuick('screenshot')">SCREENSHOT</span>
+    <span class="pill" onclick="sendQuick('cpu')">CPU</span>
+    <span class="pill" onclick="sendQuick('memory')">MEMORY</span>
+    <span class="pill" onclick="sendQuick('disk')">DISK</span>
+    <span class="pill" onclick="sendQuick('ip')">IP</span>
+    <span class="pill" onclick="sendQuick('uptime')">UPTIME</span>
+    <span class="pill" onclick="sendQuick('lock')">LOCK</span>
+  </div>
+
   <div class="input-bar">
     <input type="text" id="textInput" placeholder="Message..." onkeydown="if(event.key==='Enter')sendText()">
     <button onclick="sendText()">SUBMIT</button>
+  </div>
+</div>
+
+<div class="cmd-overlay" id="cmdOverlay" onclick="toggleCmdPanel()"></div>
+<div class="cmd-panel" id="cmdPanel">
+  <div class="cmd-header">
+    <h3>COMMANDS</h3>
+    <button class="cmd-close" onclick="toggleCmdPanel()">✕</button>
+  </div>
+  <div class="cmd-group">
+    <span class="cmd-group-label">System</span>
+    <button class="cmd-btn" onclick="sendQuick('shutdown')">SHUTDOWN</button>
+    <button class="cmd-btn" onclick="sendQuick('restart')">RESTART</button>
+    <button class="cmd-btn" onclick="sendQuick('sleep')">SLEEP</button>
+    <button class="cmd-btn" onclick="sendQuick('lock')">LOCK SCREEN</button>
+  </div>
+  <div class="cmd-group">
+    <span class="cmd-group-label">Browser</span>
+    <button class="cmd-btn" onclick="sendQuick('go to youtube.com')">GO TO YOUTUBE</button>
+    <button class="cmd-btn" onclick="sendQuick('browser back')">BACK</button>
+    <button class="cmd-btn" onclick="sendQuick('browser forward')">FORWARD</button>
+    <button class="cmd-btn" onclick="sendQuick('refresh')">REFRESH</button>
+    <button class="cmd-btn" onclick="sendQuick('new tab')">NEW TAB</button>
+    <button class="cmd-btn" onclick="sendQuick('close tab')">CLOSE TAB</button>
+  </div>
+  <div class="cmd-group">
+    <span class="cmd-group-label">Media</span>
+    <button class="cmd-btn" onclick="sendQuick('volume 50')">VOLUME 50%</button>
+    <button class="cmd-btn" onclick="sendQuick('brightness 50')">BRIGHTNESS 50%</button>
+    <button class="cmd-btn" onclick="sendQuick('screenshot')">SCREENSHOT</button>
+    <button class="cmd-btn" onclick="sendQuick('webcam')">WEBCAM</button>
+  </div>
+  <div class="cmd-group">
+    <span class="cmd-group-label">Files</span>
+    <button class="cmd-btn" onclick="sendQuick('list files')">LIST FILES</button>
+    <button class="cmd-btn" onclick="sendQuick('create folder test')">CREATE FOLDER</button>
+    <button class="cmd-btn" onclick="sendQuick('empty trash')">EMPTY TRASH</button>
+  </div>
+  <div class="cmd-group">
+    <span class="cmd-group-label">Process</span>
+    <button class="cmd-btn" onclick="sendQuick('process list')">LIST PROCESSES</button>
   </div>
 </div>
 
@@ -1013,6 +1165,32 @@
     resetTranscriptPanel();
   }
 
+  // ── Quick Actions & Commands ──
+  function sendQuick(cmd) {
+    if (cmdPanelOpen()) toggleCmdPanel();
+    addMessage(cmd, 'user');
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      showThinking(); updateStatus('PROCESSING', 'busy');
+      ws.send(JSON.stringify({ type: 'text', text: cmd }));
+    } else addMessage('Server not connected.', 'system');
+  }
+
+  function clearChat() {
+    document.getElementById('chat').innerHTML = '';
+    addMessage('// CHAT CLEARED', 'system');
+  }
+
+  function toggleCmdPanel() {
+    const panel = document.getElementById('cmdPanel');
+    const overlay = document.getElementById('cmdOverlay');
+    const open = panel.classList.toggle('open');
+    overlay.classList.toggle('open', open);
+  }
+
+  function cmdPanelOpen() {
+    return document.getElementById('cmdPanel').classList.contains('open');
+  }
+
   // ── Mic Control ──
   function toggleMic() {
     if (isListening) stopMic(); else startMic();
@@ -1089,6 +1267,10 @@
 
   document.getElementById('textInput').addEventListener('focus', () => {
     if (document.getElementById('transcriptActions').style.display === 'flex') resetTranscriptPanel();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && cmdPanelOpen()) toggleCmdPanel();
   });
 
 </script>
