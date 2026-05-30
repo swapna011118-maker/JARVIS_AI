@@ -1,30 +1,6 @@
 [
     {
         "role": "user",
-        "content": "who is the president of North Korea"
-    },
-    {
-        "role": "assistant",
-        "content": "The president of North Korea is Kim Jong Un, Sir. He has been serving as the supreme leader of North Korea since 2011 and has recently been reappointed as president of the State Affairs Commission."
-    },
-    {
-        "role": "user",
-        "content": "hello"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. I'm here and ready to assist you. We were just discussing North Korea, if you'd like to continue that conversation or move on to something else, please let me know."
-    },
-    {
-        "role": "user",
-        "content": "can you please open YouTube"
-    },
-    {
-        "role": "assistant",
-        "content": "Opening youtube, Sir. \u2014 I'd be happy to help, Sir. Please go ahead and complete your request, and I'll do my best to assist you. What is it that you need help with?"
-    },
-    {
-        "role": "user",
         "content": "open in YouTube Sir"
     },
     {
@@ -198,5 +174,29 @@
     {
         "role": "assistant",
         "content": "Yes, Sir? I am here. How may I assist you today?"
+    },
+    {
+        "role": "user",
+        "content": "ip"
+    },
+    {
+        "role": "assistant",
+        "content": "Ip checked, Sir."
+    },
+    {
+        "role": "user",
+        "content": "Hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir. How may I assist you further?"
+    },
+    {
+        "role": "user",
+        "content": "weather"
+    },
+    {
+        "role": "assistant",
+        "content": "Weather: It is patchy rain nearby with a temperature of 17\u00b0C, feels like 17\u00b0C, wind at 4 km/h, and humidity at 73%."
     }
 ]
