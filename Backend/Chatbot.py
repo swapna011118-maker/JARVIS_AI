@@ -53,8 +53,8 @@ def ChatBot(Query):
                 msgs = SystemChatBot + messages + [{"role": "user", "content": Query}]
                 if memory_msg:
                     msgs = SystemChatBot + [memory_msg] + messages + [{"role": "user", "content": Query}]
-                completion = groq_client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                completion = openrouter_client.chat.completions.create(
+                    model="nvidia/llama-3.1-nemotron-70b-instruct",
                     messages=msgs,
                     max_tokens=256,
                     temperature=0.5,
@@ -64,23 +64,23 @@ def ChatBot(Query):
                 break
             except:
                 if attempt == 1:
-                    # Fallback to OpenRouter primary, then backup
+                    # Fallback to Groq, then backup OpenRouter
                     try:
-                        completion = openrouter_client.chat.completions.create(
-                            model="google/gemini-2.0-flash-001",
+                        completion = groq_client.chat.completions.create(
+                            model="llama-3.3-70b-versatile",
                             messages=msgs,
-                            max_tokens=512,
-                            temperature=0.7,
+                            max_tokens=256,
+                            temperature=0.5,
                             stream=False,
                         )
                         Answer = completion.choices[0].message.content
                     except:
                         try:
                             completion = openrouter_backup.chat.completions.create(
-                                model="google/gemini-2.0-flash-001",
+                                model="nvidia/llama-3.1-nemotron-70b-instruct",
                                 messages=msgs,
-                                max_tokens=512,
-                                temperature=0.7,
+                                max_tokens=256,
+                                temperature=0.5,
                                 stream=False,
                             )
                             Answer = completion.choices[0].message.content

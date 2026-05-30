@@ -467,8 +467,8 @@ def KeywordRouter(query):
     if re.match(r'^(i have a question|i was wondering|can i ask|quick question)', q):
         return [f"general {q}"]
 
-    # === EVERYTHING ELSE → let FirstLayerDMM decide ===
-    return None
+    # === EVERYTHING ELSE → general (instant, no LLM fallback) ===
+    return [f"general {q}"]
 
 def FirstLayerDMM(prompt: str = "test"):
     if not prompt or not prompt.strip():
@@ -477,74 +477,7 @@ def FirstLayerDMM(prompt: str = "test"):
     kw = KeywordRouter(prompt)
     if kw is not None:
         return kw
-
-    messages.append({"role": "user", "content": f"{prompt}"})
-
-    try:
-        sys_messages = [{"role": "system", "content": preamble}]
-        chat_for_api = []
-        for m in ChatHistory:
-            role = "user" if m["role"] == "User" else "assistant"
-            chat_for_api.append({"role": role, "content": m["message"]})
-        chat_for_api.append({"role": "user", "content": prompt})
-
-        try:
-            completion = groq_client.chat.completions.create(
-                model=MODEL,
-                messages=sys_messages + chat_for_api,
-                temperature=0.4,
-                max_tokens=128,
-                stream=False,
-            )
-        except:
-            try:
-                completion = openrouter_client.chat.completions.create(
-                    model=FALLBACK_MODEL,
-                    messages=sys_messages + chat_for_api,
-                    temperature=0.4,
-                    max_tokens=128,
-                    stream=False,
-                )
-            except:
-                try:
-                    completion = openrouter_backup.chat.completions.create(
-                        model=FALLBACK_MODEL,
-                        messages=sys_messages + chat_for_api,
-                        temperature=0.4,
-                        max_tokens=128,
-                        stream=False,
-                    )
-                except:
-                    return [f"general {prompt}"]
-
-        response = completion.choices[0].message.content or ""
-        response = response.replace("\n", " ").strip()
-        response = re.sub(r'\s+', ' ', response)
-
-        tasks = [task.strip() for task in response.split(',') if task.strip()]
-
-        temp = []
-        for task in tasks:
-            for func in funcs:
-                if task.lower().startswith(func):
-                    temp.append(task)
-                    break
-
-        ChatHistory.append({"role": "User", "message": prompt})
-        ChatHistory.append({"role": "Chatbot", "message": ", ".join(temp)})
-
-        if len(ChatHistory) > 24:
-            ChatHistory.pop(0)
-            ChatHistory.pop(0)
-
-        if not temp or any("query" in t.lower() for t in temp):
-            return FirstLayerDMM(prompt)
-
-        return temp
-
-    except Exception as e:
-        print(f"[red]Error in FirstLayerDMM: {e}[/red]")
-        return [f"general {prompt}"]
+    return [f"general {prompt}"]
 
 if __name__ == "__main__":
     print("[bold green]Model Layer Loaded Successfully[/bold green]")

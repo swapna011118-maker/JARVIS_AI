@@ -1,38 +1,6 @@
 [
     {
         "role": "user",
-        "content": "hi"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. I'm back online and ready to assist you. I apologize for the brief disruption. What can I do for you today?"
-    },
-    {
-        "role": "user",
-        "content": "what was my lastquestion"
-    },
-    {
-        "role": "assistant",
-        "content": "Your last question was \"recorder free version\", Sir. Would you like me to try answering it again?"
-    },
-    {
-        "role": "user",
-        "content": "hello"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. I'm here and ready to assist you. How may I be of service today?"
-    },
-    {
-        "role": "user",
-        "content": "open YouTube"
-    },
-    {
-        "role": "assistant",
-        "content": "Opening youtube, Sir."
-    },
-    {
-        "role": "user",
         "content": "weather"
     },
     {
@@ -198,5 +166,37 @@
     {
         "role": "assistant",
         "content": "Hello, Sir. Is there anything I can do for you at the moment?"
+    },
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir."
+    },
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Good day, Sir."
+    },
+    {
+        "role": "user",
+        "content": "open YouTube"
+    },
+    {
+        "role": "assistant",
+        "content": "Opening youtube, Sir."
+    },
+    {
+        "role": "user",
+        "content": "open"
+    },
+    {
+        "role": "assistant",
+        "content": "Opening browser, Sir."
     }
 ]

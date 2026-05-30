@@ -127,8 +127,8 @@ def RealtimeSearchEngine(Query):
 
         for attempt in range(2):
             try:
-                completion = groq_client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                completion = openrouter_client.chat.completions.create(
+                    model="nvidia/llama-3.1-nemotron-70b-instruct",
                     messages=context + messages + [user_entry],
                     max_tokens=256,
                     temperature=0.3,
@@ -139,8 +139,8 @@ def RealtimeSearchEngine(Query):
             except:
                 if attempt == 1:
                     try:
-                        completion = openrouter_client.chat.completions.create(
-                            model="google/gemini-2.0-flash-001",
+                        completion = groq_client.chat.completions.create(
+                            model="llama-3.3-70b-versatile",
                             messages=context + messages + [user_entry],
                             max_tokens=256,
                             temperature=0.3,
@@ -150,7 +150,7 @@ def RealtimeSearchEngine(Query):
                     except:
                         try:
                             completion = openrouter_backup.chat.completions.create(
-                                model="google/gemini-2.0-flash-001",
+                                model="nvidia/llama-3.1-nemotron-70b-instruct",
                                 messages=context + messages + [user_entry],
                                 max_tokens=256,
                                 temperature=0.3,
