@@ -1025,9 +1025,7 @@
         if (isListening) {
           const text = (finalBuffer + lastInterim).trim();
           if (text) {
-              if (!_browserSpeaking && Date.now() >= _sttBlockedUntil) {
-                sendToServer(text);
-              }
+              sendToServer(text);
             finalBuffer = ''; lastInterim = '';
           }
         }

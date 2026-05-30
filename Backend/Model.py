@@ -222,7 +222,7 @@ def KeywordRouter(query):
         "bloomberg", "forbes", "techcrunch", "theverge", "wired",
         "hackernews", "producthunt",
         # Other
-        "maps", "translate", "weather", "paypal", "stripe",
+        "maps", "translate", "paypal", "stripe",
         "airbnb", "uber", "booking", "imdb", "zillow", "indeed",
         "glassdoor", "coinbase",
     }
@@ -416,7 +416,7 @@ def KeywordRouter(query):
     # === NEAR ME / NEWS / CURRENT EVENTS → REALTIME ===
     if re.search(r'\bnear me\b', q):
         return [f"realtime {q}"]
-    if re.search(r'\b(news|headline|latest|current|recent|breaking|prime minister|president|election|stock|price|score|result|weather|temperature|forecast|today\'?s|tonight|tomorrow|yesterday)\b', q):
+    if re.search(r'\b(news|headline|latest|current|recent|breaking|prime minister|president|election|stock|price|score|result|today\'?s|tonight|tomorrow|yesterday)\b', q):
         return [f"realtime {q}"]
 
     # === GREETINGS → GENERAL ===
@@ -427,7 +427,7 @@ def KeywordRouter(query):
     if re.match(r'^(who|what|where|when|why|how)\s', q):
         if re.search(r'\b(my|mine|your|his|her|our|their)\s', q):
             return [f"general {q}"]
-        if re.search(r'\b(news|latest|current|recent|price|stock|score|result|election|weather|temperature|forecast|today\'?s|tonight|tomorrow|yesterday)\b', q):
+        if re.search(r'\b(news|latest|current|recent|price|stock|score|result|election|today\'?s|tonight|tomorrow|yesterday)\b', q):
             return [f"realtime {q}"]
         return [f"general {q}"]
 
