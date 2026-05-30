@@ -1,22 +1,6 @@
 [
     {
         "role": "user",
-        "content": "weather"
-    },
-    {
-        "role": "assistant",
-        "content": "Opening weather, Sir."
-    },
-    {
-        "role": "user",
-        "content": "go to youtube.com"
-    },
-    {
-        "role": "assistant",
-        "content": "Executing: go to youtube.com"
-    },
-    {
-        "role": "user",
         "content": "go to youtube.com"
     },
     {
@@ -198,5 +182,21 @@
     {
         "role": "assistant",
         "content": "Opening browser, Sir."
+    },
+    {
+        "role": "user",
+        "content": "Hi"
+    },
+    {
+        "role": "assistant",
+        "content": "I apologize, Sir, but I encountered an error. Could you please repeat that?"
+    },
+    {
+        "role": "user",
+        "content": "hi"
+    },
+    {
+        "role": "assistant",
+        "content": "I apologize, Sir, but I encountered an error. Could you please repeat that?"
     }
 ]

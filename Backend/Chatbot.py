@@ -54,7 +54,7 @@ def ChatBot(Query):
                 if memory_msg:
                     msgs = SystemChatBot + [memory_msg] + messages + [{"role": "user", "content": Query}]
                 completion = openrouter_client.chat.completions.create(
-                    model="nvidia/llama-3.1-nemotron-70b-instruct",
+                    model="nvidia/nemotron-3-super-120b-a12b:free",
                     messages=msgs,
                     max_tokens=256,
                     temperature=0.5,
@@ -77,7 +77,7 @@ def ChatBot(Query):
                     except:
                         try:
                             completion = openrouter_backup.chat.completions.create(
-                                model="nvidia/llama-3.1-nemotron-70b-instruct",
+                                model="meta-llama/llama-3.3-70b-instruct:free",
                                 messages=msgs,
                                 max_tokens=256,
                                 temperature=0.5,

@@ -128,7 +128,7 @@ def RealtimeSearchEngine(Query):
         for attempt in range(2):
             try:
                 completion = openrouter_client.chat.completions.create(
-                    model="nvidia/llama-3.1-nemotron-70b-instruct",
+                    model="nvidia/nemotron-3-super-120b-a12b:free",
                     messages=context + messages + [user_entry],
                     max_tokens=256,
                     temperature=0.3,
@@ -150,7 +150,7 @@ def RealtimeSearchEngine(Query):
                     except:
                         try:
                             completion = openrouter_backup.chat.completions.create(
-                                model="nvidia/llama-3.1-nemotron-70b-instruct",
+                                model="meta-llama/llama-3.3-70b-instruct:free",
                                 messages=context + messages + [user_entry],
                                 max_tokens=256,
                                 temperature=0.3,
