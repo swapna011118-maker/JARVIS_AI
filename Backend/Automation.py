@@ -658,7 +658,22 @@ def Weather(city=None):
             env = dotenv_values(".env")
             city = env.get("UserLocation", "")
         if city:
-            url = f"https://wttr.in/{city.replace(' ', '+')}?format=j1&lang=en"
+            parts = [p.strip() for p in city.split(",")]
+            url = None
+            for i in range(len(parts), 0, -1):
+                q = ", ".join(parts[:i])
+                geo = requests.get(
+                    "https://nominatim.openstreetmap.org/search",
+                    params={"q": q, "format": "json", "limit": 1},
+                    headers={"User-Agent": "JARVIS-AI/1.0"},
+                    timeout=5
+                ).json()
+                if geo:
+                    lat, lon = geo[0]["lat"], geo[0]["lon"]
+                    url = f"https://wttr.in/{lat},{lon}?format=j1&lang=en"
+                    break
+            if not url:
+                url = "https://wttr.in?format=j1&lang=en"
         else:
             url = "https://wttr.in?format=j1&lang=en"
         response = requests.get(url, headers={"User-Agent": weather_ua}, timeout=5)
