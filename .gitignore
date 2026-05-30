@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.env
+Data/speech.mp3
+Data/test_voice.mp3
