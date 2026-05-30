@@ -660,18 +660,29 @@ def Weather(city=None):
         if city:
             parts = [p.strip() for p in city.split(",")]
             url = None
-            for i in range(len(parts), 0, -1):
-                q = ", ".join(parts[:i])
+            # Try individual parts (most specific first), then composite
+            for p in reversed(parts):
+                if not re.search(r'\b(road|street|no[\s\.]?\d+|\d+$|circle|layout|colony|phase|block|sector)', p, re.IGNORECASE):
+                    geo = requests.get(
+                        "https://nominatim.openstreetmap.org/search",
+                        params={"q": p + ", India", "format": "json", "limit": 1},
+                        headers={"User-Agent": "JARVIS-AI/1.0"},
+                        timeout=5
+                    ).json()
+                    if geo:
+                        lat, lon = geo[0]["lat"], geo[0]["lon"]
+                        url = f"https://wttr.in/{lat},{lon}?format=j1&lang=en"
+                        break
+            if not url:
                 geo = requests.get(
                     "https://nominatim.openstreetmap.org/search",
-                    params={"q": q, "format": "json", "limit": 1},
+                    params={"q": city, "format": "json", "limit": 1},
                     headers={"User-Agent": "JARVIS-AI/1.0"},
                     timeout=5
                 ).json()
                 if geo:
                     lat, lon = geo[0]["lat"], geo[0]["lon"]
                     url = f"https://wttr.in/{lat},{lon}?format=j1&lang=en"
-                    break
             if not url:
                 url = "https://wttr.in?format=j1&lang=en"
         else:

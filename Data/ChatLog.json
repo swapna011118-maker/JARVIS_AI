@@ -1,62 +1,6 @@
 [
     {
         "role": "user",
-        "content": "open in YouTube Sir"
-    },
-    {
-        "role": "assistant",
-        "content": "Opening in youtube sir, Sir."
-    },
-    {
-        "role": "user",
-        "content": "opening in YouTube Sir"
-    },
-    {
-        "role": "assistant",
-        "content": "YouTube is now open, Sir. What would you like to watch or search for?"
-    },
-    {
-        "role": "user",
-        "content": "hello"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. YouTube is still open, and I'm ready to assist you with any searches or video selections you'd like to make."
-    },
-    {
-        "role": "user",
-        "content": "search for hello on YouTube"
-    },
-    {
-        "role": "assistant",
-        "content": "Searched YouTube for hello"
-    },
-    {
-        "role": "user",
-        "content": "hi brp"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. It seems you've typed \"hi brp\", but I'm not sure what \"brp\" refers to. Could you please clarify or provide more context, Sir?"
-    },
-    {
-        "role": "user",
-        "content": "hello"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello, Sir. Is there something I can help you with or would you like to continue browsing YouTube?"
-    },
-    {
-        "role": "user",
-        "content": "hello hello"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello again, Sir. It seems we're having a bit of a greeting exchange. If you're ready to move on, I'm here to help with anything you need. If not, I'm happy to continue chatting with you, Sir."
-    },
-    {
-        "role": "user",
         "content": "recorder"
     },
     {
@@ -198,5 +142,61 @@
     {
         "role": "assistant",
         "content": "Weather: It is patchy rain nearby with a temperature of 17\u00b0C, feels like 17\u00b0C, wind at 4 km/h, and humidity at 73%."
+    },
+    {
+        "role": "user",
+        "content": "weather"
+    },
+    {
+        "role": "assistant",
+        "content": "Weather: It is sunny with a temperature of 30\u00b0C, feels like 32\u00b0C, wind at 28 km/h, and humidity at 58%."
+    },
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Sir. Is there something I can help you with or would you like to continue checking the weather?"
+    },
+    {
+        "role": "user",
+        "content": "battery"
+    },
+    {
+        "role": "assistant",
+        "content": "Battery at 100.0 percent, charging"
+    },
+    {
+        "role": "user",
+        "content": "screenshot"
+    },
+    {
+        "role": "assistant",
+        "content": "Screenshot taken, Sir."
+    },
+    {
+        "role": "user",
+        "content": "cpu"
+    },
+    {
+        "role": "assistant",
+        "content": "Cpu checked, Sir."
+    },
+    {
+        "role": "user",
+        "content": "memory"
+    },
+    {
+        "role": "assistant",
+        "content": "Memory checked, Sir."
+    },
+    {
+        "role": "user",
+        "content": "battery"
+    },
+    {
+        "role": "assistant",
+        "content": "Battery at 100.0 percent, charging"
     }
 ]

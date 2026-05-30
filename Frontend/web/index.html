@@ -1260,7 +1260,11 @@
   // ── Init ──
   connect();
   addMessage('// SYSTEM INITIALIZATION SEQUENCE COMPLETE', 'system');
-  setTimeout(() => typeMessage('Good afternoon, Sir. How may I be of service?', 'jarvis'), 1200);
+  setTimeout(() => {
+    const h = new Date().getHours();
+    const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : h < 21 ? 'Good evening' : 'Good night';
+    typeMessage(`${greet}, Sir. How may I be of service?`, 'jarvis');
+  }, 1200);
   updateStatus('CONNECTING', 'busy');
 
   document.getElementById('textInput').addEventListener('focus', () => {
